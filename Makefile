@@ -4,8 +4,17 @@ COMMON_LIBS = cntdiv.o \
               evenp.o \
               ltoi.o
 
-problem1: problem1.o $(COMMON_LIBS)
+PROBLEMS = problem1.exe
+
+SPINOFFS = antiprime.exe
+
+default: $(PROBLEMS) $(SPINOFFS)
+
+problem1.exe: problem1.o $(COMMON_LIBS)
 	${FC} -o problem1.exe problem1.o $(COMMON_LIBS)
+
+antiprime.exe: antiprime.o $(COMMON_LIBS)
+	${FC} -o antiprime.exe antiprime.o $(COMMON_LIBS)
 
 clean:
 	rm -f *.o *.exe
