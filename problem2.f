@@ -1,0 +1,8 @@
+      PROGRAM SCRATCH
+      LOGICAL PRIMEP
+      INTEGER I, CNTDIV
+      DO 10 I=1,1000
+      IF (PRIMEP(I)) PRINT *, I
+10    CONTINUE
+      END
+
