@@ -1,0 +1,7 @@
+      PROGRAM PROBLEM1
+      INTEGER I, CNTDIV
+      DO 10 I=1,200
+      PRINT *, I, CNTDIV(I)
+10    CONTINUE
+      END
+
