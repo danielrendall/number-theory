@@ -1,5 +1,7 @@
 FC = f77
-COMMON_LIBS = cntdiv.o \
+COMMON_LIBS = \
+              arrays.o \
+              cntdiv.o \
               dividp.o \
               evenp.o \
               ltoi.o \
