@@ -1,0 +1,6 @@
+      PROGRAM PROBLEM5
+      INTEGER UPPER
+      UPPER = 1000
+      CALL SUMSQS(UPPER, INT(SQRT(UPPER * 1.0)), 4)
+      END
+
