@@ -11,7 +11,23 @@ C BOUND OF THE PROBLEM
       NUSED = 0
       CALL CBMFS(I, SQURES, UPSQRT, NUMSQ, SOLUTN, NUSED)
       IF (NUSED .EQ. 0) GOTO 10
-      PRINT *, I
+      IF (NUSED .EQ. 1) GOTO 1
+      IF (NUSED .EQ. 2) GOTO 2
+      IF (NUSED .EQ. 3) GOTO 3
+      IF (NUSED .EQ. 4) GOTO 4
+1     PRINT *, I, "=", SQURES(SOLUTN(1))
+      GOTO 10
+2     PRINT *, I, "=", SQURES(SOLUTN(1)),
+     1 "+", SQURES(SOLUTN(2))
+      GOTO 10
+3     PRINT *, I, "=", SQURES(SOLUTN(1)),
+     1"+", SQURES(SOLUTN(2)),
+     2"+", SQURES(SOLUTN(3))
+      GOTO 10
+4     PRINT *, I, "=", SQURES(SOLUTN(1)),
+     1"+", SQURES(SOLUTN(2)),
+     2"+", SQURES(SOLUTN(3)),
+     3"+", SQURES(SOLUTN(4))
 10    CONTINUE
       END
 
