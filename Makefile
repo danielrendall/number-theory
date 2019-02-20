@@ -15,6 +15,7 @@ PROBLEMS = \
            problem3.exe \
            problem4.exe \
            problem5.exe \
+           problem6.exe \
 
 SPINOFFS = antiprime.exe
 
@@ -39,9 +40,11 @@ problem4.exe: problem4.o $(COMMON_LIBS)
 problem5.exe: problem5.o $(COMMON_LIBS)
 	${FC} -o problem5.exe problem5.o $(COMMON_LIBS)
 
+problem6.exe: problem6.o $(COMMON_LIBS)
+	${FC} -o problem6.exe problem6.o $(COMMON_LIBS)
+
 antiprime.exe: antiprime.o $(COMMON_LIBS)
 	${FC} -o antiprime.exe antiprime.o $(COMMON_LIBS)
-
 
 scratch.exe: scratch.o $(COMMON_LIBS)
 	${FC} -o scratch.exe scratch.o $(COMMON_LIBS)
