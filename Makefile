@@ -7,7 +7,8 @@ COMMON_LIBS = \
               ltoi.o \
               populate.o \
               primep.o \
-              sumsqs.o
+              sumsqs.o \
+              testing.f
 
 PROBLEMS = \
            problem1.exe \
@@ -21,7 +22,7 @@ SPINOFFS = antiprime.exe
 
 SCRATCHES =
 
-TESTS = test_ictns.exe
+TESTS = test_ictns.exe test_aiddup.exe
 
 default: $(PROBLEMS) $(SPINOFFS) $(SCRATCHES) $(TESTS)
 
@@ -51,6 +52,9 @@ scratch.exe: scratch.o $(COMMON_LIBS)
 
 test_ictns.exe:test_ictns.o $(COMMON_LIBS)
 	${FC} -o test_ictns.exe test_ictns.o $(COMMON_LIBS)
+
+test_aiddup.exe:test_aiddup.o $(COMMON_LIBS)
+	${FC} -o test_aiddup.exe test_aiddup.o $(COMMON_LIBS)
 
 clean:
 	rm -f *.o *.exe
