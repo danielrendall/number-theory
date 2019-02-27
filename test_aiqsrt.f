@@ -1,12 +1,12 @@
       PROGRAM TESTAIQSRT
-C      CALL ALSAME(1)
-C      CALL SORTED(2)
-C      CALL REVERSE(3)
-C      CALL PALN1(4)
-C      CALL PALN2(5)
-C      CALL PALN3(6)
-C      CALL PALN4(7)
-C      CALL PALN10(8)
+      CALL ALSAME(1)
+      CALL SORTED(2)
+      CALL REVERSE(3)
+      CALL PALN1(4)
+      CALL PALN2(5)
+      CALL PALN3(6)
+      CALL PALN4(7)
+      CALL PALN10(8)
       CALL RAND1(9)
       END
 
