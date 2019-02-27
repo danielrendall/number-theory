@@ -3,11 +3,9 @@ FFLAGS = -g
 COMMON_LIBS = \
               arrays.o \
               cntdiv.o \
-              dividp.o \
-              evenp.o \
               ltoi.o \
+              numprd.o \
               populate.o \
-              primep.o \
               sumsqs.o \
               testing.f
 
