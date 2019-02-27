@@ -1,0 +1,139 @@
+      PROGRAM TESTAIQSRT
+C      CALL ALSAME(1)
+C      CALL SORTED(2)
+C      CALL REVERSE(3)
+C      CALL PALN1(4)
+C      CALL PALN2(5)
+C      CALL PALN3(6)
+C      CALL PALN4(7)
+C      CALL PALN10(8)
+      CALL RAND1(9)
+      END
+
+      SUBROUTINE ALSAME(T)
+      INTEGER T, ARRAY(10)
+      DO 10 I=1,10
+      ARRAY(I) = 7
+10    CONTINUE
+      CALL AIQSRT(ARRAY, 10)
+      CALL IXPECT(T, 1, ARRAY(1), 7)
+      CALL IXPECT(T, 2, ARRAY(5), 7)
+      CALL IXPECT(T, 3, ARRAY(10), 7)
+      END
+
+      SUBROUTINE SORTED(T)
+      INTEGER T, ARRAY(10)
+      DO 20 I=1,10
+      ARRAY(I) = I
+20    CONTINUE
+      CALL AIQSRT(ARRAY, 10)
+      CALL IXPECT(T, 1, ARRAY(1), 1)
+      CALL IXPECT(T, 2, ARRAY(3), 3)
+      CALL IXPECT(T, 3, ARRAY(5), 5)
+      CALL IXPECT(T, 4, ARRAY(7), 7)
+      CALL IXPECT(T, 5, ARRAY(10), 10)
+      END
+
+      SUBROUTINE REVERSE(T)
+      INTEGER T, ARRAY(10)
+      DO 30 I=1,10
+      ARRAY(11 - I) = I
+30    CONTINUE
+      CALL AIQSRT(ARRAY, 10)
+      CALL IXPECT(T, 1, ARRAY(1), 1)
+      CALL IXPECT(T, 2, ARRAY(3), 3)
+      CALL IXPECT(T, 3, ARRAY(5), 5)
+      CALL IXPECT(T, 4, ARRAY(7), 7)
+      CALL IXPECT(T, 5, ARRAY(10), 10)
+      END
+
+      SUBROUTINE PALN1(T)
+      INTEGER T, ARRAY(1)
+      ARRAY(1) = 1
+      CALL IXPECT(T, 1, ARRAY(1), 1)
+      CALL AIQSRT(ARRAY, 1)
+      CALL IXPECT(T, 2, ARRAY(1), 1)
+      END
+
+      SUBROUTINE PALN2(T)
+      INTEGER T, ARRAY(2)
+      ARRAY(1) = 1
+      ARRAY(2) = 1
+      CALL IXPECT(T, 1, ARRAY(1), 1)
+      CALL AIQSRT(ARRAY, 2)
+      CALL IXPECT(T, 2, ARRAY(1), 1)
+      CALL IXPECT(T, 3, ARRAY(2), 1)
+      END
+
+      SUBROUTINE PALN3(T)
+      INTEGER T, ARRAY(3)
+      ARRAY(1) = 1
+      ARRAY(2) = 2
+      ARRAY(3) = 1
+      CALL IXPECT(T, 1, ARRAY(1), 1)
+      CALL AIQSRT(ARRAY, 3)
+      CALL IXPECT(T, 2, ARRAY(1), 1)
+      CALL IXPECT(T, 3, ARRAY(2), 1)
+      CALL IXPECT(T, 4, ARRAY(3), 2)
+      END
+
+      SUBROUTINE PALN4(T)
+      INTEGER T, ARRAY(4)
+      ARRAY(1) = 1
+      ARRAY(2) = 2
+      ARRAY(3) = 2
+      ARRAY(4) = 1
+      CALL IXPECT(T, 1, ARRAY(1), 1)
+      CALL AIQSRT(ARRAY, 4)
+      CALL IXPECT(T, 2, ARRAY(1), 1)
+      CALL IXPECT(T, 3, ARRAY(2), 1)
+      CALL IXPECT(T, 4, ARRAY(3), 2)
+      CALL IXPECT(T, 5, ARRAY(4), 2)
+      END
+
+      SUBROUTINE PALN10(T)
+      INTEGER T, ARRAY(10)
+      DO 30 I=1,5
+      ARRAY(I) = I
+      ARRAY(11 - I) = I
+30    CONTINUE
+      CALL IXPECT(T, 1, ARRAY(3), 3)
+      CALL IXPECT(T, 2, ARRAY(8), 3)
+      CALL AIQSRT(ARRAY, 10)
+      CALL IXPECT(T, 3, ARRAY(1), 1)
+      CALL IXPECT(T, 4, ARRAY(2), 1)
+      CALL IXPECT(T, 5, ARRAY(3), 2)
+      CALL IXPECT(T, 6, ARRAY(4), 2)
+      CALL IXPECT(T, 7, ARRAY(5), 3)
+      CALL IXPECT(T, 8, ARRAY(6), 3)
+      CALL IXPECT(T, 9, ARRAY(7), 4)
+      CALL IXPECT(T, 10, ARRAY(8), 4)
+      CALL IXPECT(T, 11, ARRAY(9), 5)
+      CALL IXPECT(T, 12, ARRAY(10), 5)
+      END
+
+      SUBROUTINE RAND1(T)
+      INTEGER T, ARRAY(10)
+      ARRAY(1) = 8
+      ARRAY(2) = 2
+      ARRAY(3) = 10
+      ARRAY(4) = 3
+      ARRAY(5) = 7
+      ARRAY(6) = 9
+      ARRAY(7) = 1
+      ARRAY(8) = 6
+      ARRAY(9) = 5
+      ARRAY(10) = 4
+      CALL AIQSRT(ARRAY, 10)
+      CALL IXPECT(T, 3, ARRAY(1), 1)
+      CALL IXPECT(T, 4, ARRAY(2), 2)
+      CALL IXPECT(T, 5, ARRAY(3), 3)
+      CALL IXPECT(T, 6, ARRAY(4), 4)
+      CALL IXPECT(T, 7, ARRAY(5), 5)
+      CALL IXPECT(T, 8, ARRAY(6), 6)
+      CALL IXPECT(T, 9, ARRAY(7), 7)
+      CALL IXPECT(T, 10, ARRAY(8), 8)
+      CALL IXPECT(T, 11, ARRAY(9), 9)
+      CALL IXPECT(T, 12, ARRAY(10), 10)
+      END
+      
