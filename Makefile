@@ -2,6 +2,7 @@ FC = f77
 FFLAGS = -g
 COMMON_LIBS = \
               arrays.o \
+              bitops.o \
               cntdiv.o \
               ltoi.o \
               numprd.o \
@@ -17,14 +18,19 @@ PROBLEMS = \
            problem5.exe \
            problem6.exe \
 
-SPINOFFS = antiprime.exe
+SPINOFFS = \
+           antiprime.exe \
+           lfsr1.exe \
+           lfsr2.exe \
+           lfsr3.exe
 
 SCRATCHES =
 
 TESTS = \
         test_ictns.exe \
         test_aiddup.exe \
-        test_aiqsrt.exe
+        test_aiqsrt.exe \
+        test_bitops.exe
 
 default: $(PROBLEMS) $(SPINOFFS) $(SCRATCHES) $(TESTS)
 
@@ -49,6 +55,15 @@ problem6.exe: problem6.o $(COMMON_LIBS)
 antiprime.exe: antiprime.o $(COMMON_LIBS)
 	${FC} ${FFLAGS} -o antiprime.exe antiprime.o $(COMMON_LIBS)
 
+lfsr1.exe: lfsr1.o $(COMMON_LIBS)
+	${FC} ${FFLAGS} -o lfsr1.exe lfsr1.o $(COMMON_LIBS)
+
+lfsr2.exe: lfsr2.o $(COMMON_LIBS)
+	${FC} ${FFLAGS} -o lfsr2.exe lfsr2.o $(COMMON_LIBS)
+
+lfsr3.exe: lfsr3.o $(COMMON_LIBS)
+	${FC} ${FFLAGS} -o lfsr3.exe lfsr3.o $(COMMON_LIBS)
+
 scratch.exe: scratch.o $(COMMON_LIBS)
 	${FC} ${FFLAGS} -o scratch.exe scratch.o $(COMMON_LIBS)
 
@@ -60,6 +75,9 @@ test_aiddup.exe:test_aiddup.o $(COMMON_LIBS)
 
 test_aiqsrt.exe:test_aiqsrt.o $(COMMON_LIBS)
 	${FC} ${FFLAGS} -o test_aiqsrt.exe test_aiqsrt.o $(COMMON_LIBS)
+
+test_bitops.exe:test_bitops.o $(COMMON_LIBS)
+	${FC} ${FFLAGS} -o test_bitops.exe test_bitops.o $(COMMON_LIBS)
 
 clean:
 	rm -f *.o *.exe
