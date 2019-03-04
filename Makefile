@@ -2,14 +2,17 @@ FC = f77
 FFLAGS = -g --std=legacy
 COMMON_LIBS = \
               arrays.o \
+              arrprd.o \
               bitops.o \
               cntdiv.o \
               lfsrs.o \
               ltoi.o \
               numprd.o \
               populate.o \
-              sumsqs.o \
-              testing.f
+              sumsqs.o
+
+TEST_LIBS = \
+            testing.f
 
 PROBLEMS = \
            problem1.exe \
@@ -53,17 +56,17 @@ problem6.exe: problem6.o $(COMMON_LIBS)
 antiprime.exe: antiprime.o $(COMMON_LIBS)
 	${FC} ${FFLAGS} -o antiprime.exe antiprime.o $(COMMON_LIBS)
 
-test_ictns.exe:test_ictns.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o test_ictns.exe test_ictns.o $(COMMON_LIBS)
+test_ictns.exe:test_ictns.o $(COMMON_LIBS) ${TEST_LIBS}
+	${FC} ${FFLAGS} -o test_ictns.exe test_ictns.o $(COMMON_LIBS) ${TEST_LIBS}
 
-test_aiddup.exe:test_aiddup.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o test_aiddup.exe test_aiddup.o $(COMMON_LIBS)
+test_aiddup.exe:test_aiddup.o $(COMMON_LIBS) ${TEST_LIBS}
+	${FC} ${FFLAGS} -o test_aiddup.exe test_aiddup.o $(COMMON_LIBS) ${TEST_LIBS}
 
-test_aiqsrt.exe:test_aiqsrt.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o test_aiqsrt.exe test_aiqsrt.o $(COMMON_LIBS)
+test_aiqsrt.exe:test_aiqsrt.o $(COMMON_LIBS) ${TEST_LIBS}
+	${FC} ${FFLAGS} -o test_aiqsrt.exe test_aiqsrt.o $(COMMON_LIBS) ${TEST_LIBS}
 
-test_bitops.exe:test_bitops.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o test_bitops.exe test_bitops.o $(COMMON_LIBS)
+test_bitops.exe:test_bitops.o $(COMMON_LIBS) ${TEST_LIBS}
+	${FC} ${FFLAGS} -o test_bitops.exe test_bitops.o $(COMMON_LIBS) ${TEST_LIBS}
 
 clean:
 	rm -f *.o *.exe
