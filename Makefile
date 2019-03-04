@@ -1,15 +1,7 @@
 FC = f77
-FFLAGS = -g --std=legacy
-COMMON_LIBS = \
-              arrays.o \
-              arrprd.o \
-              bitops.o \
-              cntdiv.o \
-              lfsrs.o \
-              ltoi.o \
-              numprd.o \
-              populate.o \
-              sumsqs.o
+FFLAGS = -g
+
+CNTDIV = cntdiv.o numprd.o
 
 TEST_LIBS = \
             testing.f
@@ -35,38 +27,42 @@ TESTS = \
 
 default: $(PROBLEMS) $(SPINOFFS) $(SCRATCHES) $(TESTS)
 
-problem1.exe: problem1.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o problem1.exe problem1.o $(COMMON_LIBS)
+problem1.exe: problem1.o $(CNTDIV)
+	${FC} ${FFLAGS} -o problem1.exe problem1.o $(CNTDIV)
 
-problem2.exe: problem2.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o problem2.exe problem2.o $(COMMON_LIBS)
+problem2.exe: problem2.o $(CNTDIV)
+	${FC} ${FFLAGS} -o problem2.exe problem2.o $(CNTDIV)
 
-problem3.exe: problem3.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o problem3.exe problem3.o $(COMMON_LIBS)
+P3TO5LIBS = arrays.o numprd.o populate.o sumsqs.o
 
-problem4.exe: problem4.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o problem4.exe problem4.o $(COMMON_LIBS)
+problem3.exe: problem3.o $(P3TO5LIBS)
+	${FC} ${FFLAGS} -o problem3.exe problem3.o $(P3TO5LIBS)
 
-problem5.exe: problem5.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o problem5.exe problem5.o $(COMMON_LIBS)
+problem4.exe: problem4.o $(P3TO5LIBS)
+	${FC} ${FFLAGS} -o problem4.exe problem4.o $(P3TO5LIBS)
 
-problem6.exe: problem6.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o problem6.exe problem6.o $(COMMON_LIBS)
+problem5.exe: problem5.o $(P3TO5LIBS)
+	${FC} ${FFLAGS} -o problem5.exe problem5.o $(P3TO5LIBS)
 
-antiprime.exe: antiprime.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o antiprime.exe antiprime.o $(COMMON_LIBS)
+P67LIBS = arrays.o arrprd.o numprd.o
 
-test_ictns.exe:test_ictns.o $(COMMON_LIBS) ${TEST_LIBS}
-	${FC} ${FFLAGS} -o test_ictns.exe test_ictns.o $(COMMON_LIBS) ${TEST_LIBS}
+problem6.exe: problem6.o $(P67LIBS)
+	${FC} ${FFLAGS} -o problem6.exe problem6.o $(P67LIBS)
 
-test_aiddup.exe:test_aiddup.o $(COMMON_LIBS) ${TEST_LIBS}
-	${FC} ${FFLAGS} -o test_aiddup.exe test_aiddup.o $(COMMON_LIBS) ${TEST_LIBS}
+antiprime.exe: antiprime.o $(CNTDIV)
+	${FC} ${FFLAGS} -o antiprime.exe antiprime.o $(CNTDIV)
 
-test_aiqsrt.exe:test_aiqsrt.o $(COMMON_LIBS) ${TEST_LIBS}
-	${FC} ${FFLAGS} -o test_aiqsrt.exe test_aiqsrt.o $(COMMON_LIBS) ${TEST_LIBS}
+test_ictns.exe:test_ictns.o arrays.o populate.o sumsqs.o ${TEST_LIBS}
+	${FC} ${FFLAGS} -o test_ictns.exe test_ictns.o arrays.o populate.o sumsqs.o ${TEST_LIBS}
 
-test_bitops.exe:test_bitops.o $(COMMON_LIBS) ${TEST_LIBS}
-	${FC} ${FFLAGS} -o test_bitops.exe test_bitops.o $(COMMON_LIBS) ${TEST_LIBS}
+test_aiddup.exe:test_aiddup.o arrays.o ${TEST_LIBS}
+	${FC} ${FFLAGS} -o test_aiddup.exe test_aiddup.o arrays.o ${TEST_LIBS}
+
+test_aiqsrt.exe:test_aiqsrt.o arrays.o arrprd.o bitops.o lfsrs.o ${TEST_LIBS}
+	${FC} ${FFLAGS} -o test_aiqsrt.exe test_aiqsrt.o arrays.o arrprd.o bitops.o lfsrs.o ${TEST_LIBS}
+
+test_bitops.exe:test_bitops.o bitops.o ${TEST_LIBS}
+	${FC} ${FFLAGS} -o test_bitops.exe test_bitops.o bitops.o ${TEST_LIBS}
 
 clean:
 	rm -f *.o *.exe
