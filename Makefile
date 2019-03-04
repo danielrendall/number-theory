@@ -1,9 +1,10 @@
 FC = f77
-FFLAGS = -g
+FFLAGS = -g --std=legacy
 COMMON_LIBS = \
               arrays.o \
               bitops.o \
               cntdiv.o \
+              lfsrs.o \
               ltoi.o \
               numprd.o \
               populate.o \
@@ -19,10 +20,7 @@ PROBLEMS = \
            problem6.exe \
 
 SPINOFFS = \
-           antiprime.exe \
-           lfsr1.exe \
-           lfsr2.exe \
-           lfsr3.exe
+           antiprime.exe
 
 SCRATCHES =
 
@@ -54,18 +52,6 @@ problem6.exe: problem6.o $(COMMON_LIBS)
 
 antiprime.exe: antiprime.o $(COMMON_LIBS)
 	${FC} ${FFLAGS} -o antiprime.exe antiprime.o $(COMMON_LIBS)
-
-lfsr1.exe: lfsr1.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o lfsr1.exe lfsr1.o $(COMMON_LIBS)
-
-lfsr2.exe: lfsr2.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o lfsr2.exe lfsr2.o $(COMMON_LIBS)
-
-lfsr3.exe: lfsr3.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o lfsr3.exe lfsr3.o $(COMMON_LIBS)
-
-scratch.exe: scratch.o $(COMMON_LIBS)
-	${FC} ${FFLAGS} -o scratch.exe scratch.o $(COMMON_LIBS)
 
 test_ictns.exe:test_ictns.o $(COMMON_LIBS)
 	${FC} ${FFLAGS} -o test_ictns.exe test_ictns.o $(COMMON_LIBS)
