@@ -44,7 +44,7 @@ problem4.exe: problem4.o $(P3TO5LIBS)
 problem5.exe: problem5.o $(P3TO5LIBS)
 	${FC} ${FFLAGS} -o problem5.exe problem5.o $(P3TO5LIBS)
 
-P67LIBS = arrays.o arrprd.o numprd.o
+P67LIBS = arrays.o arrprd.o numprd.o quares.o
 
 problem6.exe: problem6.o $(P67LIBS)
 	${FC} ${FFLAGS} -o problem6.exe problem6.o $(P67LIBS)
