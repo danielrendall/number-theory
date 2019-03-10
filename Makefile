@@ -22,10 +22,10 @@ SPINOFFS = \
 SCRATCHES =
 
 TESTS = \
-        test_ictns.exe \
         test_aiddup.exe \
         test_aiqsrt.exe \
-        test_bitops.exe
+        test_bitops.exe \
+        test_cntrs.exe
 
 default: $(PROBLEMS) $(SPINOFFS) $(SCRATCHES) $(TESTS)
 
@@ -35,7 +35,7 @@ problem1.exe: problem1.o $(CNTDIV)
 problem2.exe: problem2.o $(CNTDIV)
 	${FC} ${FFLAGS} -o problem2.exe problem2.o $(CNTDIV)
 
-P3TO5LIBS = arrays.o numprd.o populate.o sumsqs.o
+P3TO5LIBS = arrays.o cntrs.o numprd.o populate.o sumsqs.o
 
 problem3.exe: problem3.o $(P3TO5LIBS)
 	${FC} ${FFLAGS} -o problem3.exe problem3.o $(P3TO5LIBS)
@@ -60,9 +60,6 @@ problem8.exe: problem8.o arrays.o bitops.o numprd.o
 antiprime.exe: antiprime.o $(CNTDIV)
 	${FC} ${FFLAGS} -o antiprime.exe antiprime.o $(CNTDIV)
 
-test_ictns.exe:test_ictns.o arrays.o populate.o sumsqs.o ${TEST_LIBS}
-	${FC} ${FFLAGS} -o test_ictns.exe test_ictns.o arrays.o populate.o sumsqs.o ${TEST_LIBS}
-
 test_aiddup.exe:test_aiddup.o arrays.o ${TEST_LIBS}
 	${FC} ${FFLAGS} -o test_aiddup.exe test_aiddup.o arrays.o ${TEST_LIBS}
 
@@ -71,6 +68,9 @@ test_aiqsrt.exe:test_aiqsrt.o arrays.o arrprd.o bitops.o lfsrs.o ${TEST_LIBS}
 
 test_bitops.exe:test_bitops.o bitops.o ${TEST_LIBS}
 	${FC} ${FFLAGS} -o test_bitops.exe test_bitops.o bitops.o ${TEST_LIBS}
+
+test_cntrs.exe:test_cntrs.o arrays.o cntrs.o populate.o ${TEST_LIBS}
+	${FC} ${FFLAGS} -o test_cntrs.exe test_cntrs.o arrays.o cntrs.o populate.o ${TEST_LIBS}
 
 clean:
 	rm -f *.o *.exe
