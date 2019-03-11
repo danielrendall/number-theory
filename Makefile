@@ -16,7 +16,8 @@ PROBLEMS = \
            problem7.exe \
            problem8.exe \
            problem9.exe \
-           problem10.exe
+           problem10.exe \
+           problem11.exe
 
 SPINOFFS = \
            antiprime.exe
@@ -64,6 +65,9 @@ problem9.exe: problem9.o arrays.o cntrs.o numprd.o
 
 problem10.exe: problem10.o numprd.o
 	${FC} ${FFLAGS} -o problem10.exe problem10.o numprd.o
+
+problem11.exe: problem11.o numprd.o
+	${FC} ${FFLAGS} -o problem11.exe problem11.o numprd.o
 
 antiprime.exe: antiprime.o $(CNTDIV)
 	${FC} ${FFLAGS} -o antiprime.exe antiprime.o $(CNTDIV)
