@@ -25,7 +25,13 @@ PROBLEMS = \
 SPINOFFS = \
            antiprime.exe
 
-SCRATCHES =
+SCRATCHES = \
+            swaps1.exe \
+            swaps2.exe \
+            array1.exe \
+            array3.exe \
+            if1.exe \
+            if2.exe
 
 TESTS = \
         test_aiddup.exe \
@@ -95,6 +101,27 @@ test_bitops.exe:test_bitops.o bitops.o ${TEST_LIBS}
 
 test_cntrs.exe:test_cntrs.o arrays.o cntrs.o populate.o ${TEST_LIBS}
 	${FC} ${FFLAGS} -o test_cntrs.exe test_cntrs.o arrays.o cntrs.o populate.o ${TEST_LIBS}
+
+swaps1.exe:swaps1.o
+	${FC} ${FFLAGS} -o swaps1.exe swaps1.o
+
+swaps2.exe:swaps2.o
+	${FC} ${FFLAGS} -o swaps2.exe swaps2.o
+
+array1.exe:array1.o
+	${FC} ${FFLAGS} -o array1.exe array1.o
+
+array2.exe:array2.o
+	${FC} ${FFLAGS} -o array2.exe array2.o
+
+array3.exe:array3.o
+	${FC} ${FFLAGS} -o array3.exe array3.o
+
+if1.exe:if1.o
+	${FC} ${FFLAGS} -o if1.exe if1.o
+
+if2.exe:if2.o
+	${FC} ${FFLAGS} -o if2.exe if2.o
 
 clean:
 	rm -f *.o *.exe
